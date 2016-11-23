@@ -14,24 +14,16 @@ $(document).ready(function() {
 });
 
 
-var topesEscalas = [10000, 20000, 30000, 60000, 90000, 120000,99999999];
-var porcentajesEscalas = [0.09, 0.14, 0.19, 0.23, 0.27, 0.31, 0.35];
-var fijosEscalas = [900, 1400, 1900, 6900, 8100, 9300];
+var topesEscalas = [61000, 91000, 122000, 182000, 243000, 426000,99999999];
+var porcentajesEscalas = [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35];
+var fijosEscalas = [3050, 6050, 10700, 22700, 37950, 92850];
 
-var MINIMO_NO_IMPONIBLE = 42318;
-var ADICIONAL_4TA_CATEGORIA = 203126;
-var CONYUGE = 39778;
-var HIJO = 19889;
-var FAMILIAR_A_CARGO = 19889;
+var MINIMO_NO_IMPONIBLE = 48666;
+var ADICIONAL_4TA_CATEGORIA = 223596.80;
+var HIJO = 22872;
 
 function calcular() {
-	
-	var sueldoBruto = $('#sueldoBruto').val();
-	var conyuge = $("input[name='conyuge']:checked").val();
-	
-	var familiaresComponent = document.getElementById("familiares");
-	var cantFamiliares = familiaresComponent.options[familiaresComponent.selectedIndex].value;
-	
+			
 	var hijosComponent = document.getElementById("hijos");
 	var cantHijos = hijosComponent.options[hijosComponent.selectedIndex].value;
 	
@@ -39,11 +31,8 @@ function calcular() {
 	var sueldoNeto = sueldoBruto * 0.83;
 	var sueldoNetoAnual = sueldoNeto * 13;
 	
-	var conyuge = $('#conyuge').prop('checked');
-
 	//var MNI_anual = 42318+203126+39778*cantFamiliares+19889*cantHijos;
-	var MNI_anual = MINIMO_NO_IMPONIBLE+ADICIONAL_4TA_CATEGORIA+FAMILIAR_A_CARGO*cantFamiliares+HIJO*cantHijos;
-	MNI_anual += CONYUGE * ((conyuge) ? 1 : 0);
+	var MNI_anual = MINIMO_NO_IMPONIBLE+ADICIONAL_4TA_CATEGORIA+HIJO*cantHijos;
 	var MNI_mensual = MNI_anual / 13;
 	
 	var MontoImponibleAnual =  0;
